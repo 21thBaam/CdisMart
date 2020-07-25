@@ -1,0 +1,23 @@
+﻿@charset "ISO-8859-1";
+
+.contai{
+    min-height: 70vh;
+}
+
+.navbar-brand {
+    padding: 10px;
+}
+
+.title {
+    border-radius: 15px;
+    background-color: white;
+}
+
+.card {
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #f0f0f0b5;
+    width: 90%;
+    margin: 70px auto 0 auto;
+    box-shadow: #E0E0E0 5px 5px;
+}

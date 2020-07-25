@@ -1,0 +1,13 @@
+﻿@charset "ISO-8859-1";
+
+.contai{
+    min-height: 80vh;
+}
+
+.tabla{
+    padding: 5% 0 0 0;
+}
+
+.navbar-brand{
+    padding: 10px;
+}

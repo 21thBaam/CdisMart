@@ -1,0 +1,11 @@
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\bin\Debug\CdisMartBLL.dll
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\bin\Debug\CdisMartBLL.pdb
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\bin\Debug\CdisMartDAL.dll
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\bin\Debug\CdisMartDAL.pdb
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\bin\Debug\CdisMartDAL.dll.config
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\bin\Debug\EntityFramework.xml
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\obj\Debug\CdisMartBLL.csprojAssemblyReference.cache
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\obj\Debug\CdisMartBLL.csproj.CoreCompileInputs.cache
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\obj\Debug\CdisMartBLL.csproj.CopyComplete
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\obj\Debug\CdisMartBLL.dll
+C:\Users\Angel\source\repos\CdisMart\CdisMartBLL\obj\Debug\CdisMartBLL.pdb

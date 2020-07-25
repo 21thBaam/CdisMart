@@ -1,0 +1,25 @@
+@charset "ISO-8859-1";
+
+.container{
+    width: 60%;
+	margin-top: 50px;
+}
+
+body{
+	min-height: 100vh;
+}
+
+.contenido{
+	padding-bottom: 50px;
+}
+
+.footer{
+    width: 100%;
+    background-color: green;
+    position: fixed;
+  	bottom: 0;
+}
+
+nav {
+    height: 30px;
+}

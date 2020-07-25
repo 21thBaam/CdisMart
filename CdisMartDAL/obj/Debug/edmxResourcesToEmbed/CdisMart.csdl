@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CdisMartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Auction">
+    <Key>
+      <PropertyRef Name="AuctionId" />
+    </Key>
+    <Property Name="AuctionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="HighestBid" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Winner" Type="Int32" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Auction_User" FromRole="Auction" ToRole="User" />
+    <NavigationProperty Name="AuctionRecord" Relationship="Self.FK_AuctionRecord_Auction" FromRole="Auction" ToRole="AuctionRecord" />
+  </EntityType>
+  <EntityType Name="AuctionRecord">
+    <Key>
+      <PropertyRef Name="RecordId" />
+    </Key>
+    <Property Name="RecordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuctionId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="BidDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Auction" Relationship="Self.FK_AuctionRecord_Auction" FromRole="AuctionRecord" ToRole="Auction" />
+    <NavigationProperty Name="User" Relationship="Self.FK_AuctionRecord_User" FromRole="AuctionRecord" ToRole="User" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Auction" Relationship="Self.FK_Auction_User" FromRole="User" ToRole="Auction" />
+    <NavigationProperty Name="AuctionRecord" Relationship="Self.FK_AuctionRecord_User" FromRole="User" ToRole="AuctionRecord" />
+  </EntityType>
+  <Association Name="FK_Auction_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Auction" Type="Self.Auction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Auction">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuctionRecord_Auction">
+    <End Role="Auction" Type="Self.Auction" Multiplicity="1" />
+    <End Role="AuctionRecord" Type="Self.AuctionRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Auction">
+        <PropertyRef Name="AuctionId" />
+      </Principal>
+      <Dependent Role="AuctionRecord">
+        <PropertyRef Name="AuctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuctionRecord_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="AuctionRecord" Type="Self.AuctionRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="AuctionRecord">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CdisMartEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Auction" EntityType="Self.Auction" />
+    <EntitySet Name="AuctionRecord" EntityType="Self.AuctionRecord" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_Auction_User" Association="Self.FK_Auction_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Auction" EntitySet="Auction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuctionRecord_Auction" Association="Self.FK_AuctionRecord_Auction">
+      <End Role="Auction" EntitySet="Auction" />
+      <End Role="AuctionRecord" EntitySet="AuctionRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuctionRecord_User" Association="Self.FK_AuctionRecord_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="AuctionRecord" EntitySet="AuctionRecord" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
